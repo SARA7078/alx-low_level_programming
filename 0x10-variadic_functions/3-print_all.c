@@ -31,6 +31,7 @@ void print_s(va_list list, char *sep)
 	char *s;
 
 	s = va_arg(list, char *);
+
 	if (s == NULL)
 		s = "(nil)";
 	printf("%s%s", sep, s);
@@ -54,6 +55,7 @@ void print_all(const char * const format, ...)
 	va_list list;
 	char *sep;
 	int i, j;
+
 	fm_t fm[] = {
 		{"c", print_c},
 		{"i", print_i},
@@ -61,9 +63,11 @@ void print_all(const char * const format, ...)
 		{"s", print_s},
 		{NULL, NULL}
 	};
+
 	va_start(list, format);
 	i = 0;
 	sep = "";
+
 	while (format != NULL && format[i] != '\0')
 	{
 		j = 0;
@@ -78,6 +82,7 @@ void print_all(const char * const format, ...)
 		}
 		i++;
 	}
+
 	printf("\n");
 	va_end(list);
 }
